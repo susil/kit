@@ -1,3 +1,7 @@
+person_person:
+    resource: "@PersonBundle/Resources/config/routing/person.yml"
+    prefix:   /person
+
 person_homepage:
     path:     /hello/{name}
     defaults: { _controller: PersonBundle:Default:index }

@@ -59,7 +59,7 @@ class Person
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="empenddate", type="datetime")
+     * @ORM\Column(name="empenddate", type="datetime", nullable=true)
      */
     private $empenddate;
 

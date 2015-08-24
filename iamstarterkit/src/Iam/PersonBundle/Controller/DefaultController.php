@@ -8,7 +8,18 @@ class DefaultController extends Controller
 {
     public function indexAction($name)
     {
-        return $this->render('PersonBundle:Default:index.html.twig', array('name' => $name));
+        //$em = $this->container->get('doctrine')->getManager();
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('PersonBundle:Person');
+
+        $person = $repo->findOneBy( array(
+            'firstname'=>'Scott'
+        ));
+
+
+        return $this->render(
+            'PersonBundle:Default:index.html.twig',
+            array('name' => $name, 'person'=>$person));
 
 
 

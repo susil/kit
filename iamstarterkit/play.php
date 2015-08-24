@@ -45,3 +45,24 @@ echo $templating->render(
     'PersonBundle:Default:index.html.twig',
     array('name'=> 'Kevin Dale', 'no. of cars'=>5)
 );
+
+use Iam\PersonBundle\Entity\Person;
+
+$person= new Person();
+$person->setEmployeeid(123123123);
+$person->setFirstname('Scott');
+$person->setLastname('tiger');
+$person->setStatus('Active');
+$person->setTitle('The Man');
+$d1=new DateTime("2015-07-08 11:14:15.638276");
+//$person->setEmpenddate($d1);
+
+
+$em=$container->get('doctrine')->getManager();
+$em->persist($person);
+$em->flush();
+
+
+
+
+

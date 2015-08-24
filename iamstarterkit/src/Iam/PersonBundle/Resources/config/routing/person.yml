@@ -1,0 +1,30 @@
+person:
+    path:     /
+    defaults: { _controller: "PersonBundle:Person:index" }
+
+person_show:
+    path:     /{id}/show
+    defaults: { _controller: "PersonBundle:Person:show" }
+
+person_new:
+    path:     /new
+    defaults: { _controller: "PersonBundle:Person:new" }
+
+person_create:
+    path:     /create
+    defaults: { _controller: "PersonBundle:Person:create" }
+    methods:  POST
+
+person_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PersonBundle:Person:edit" }
+
+person_update:
+    path:     /{id}/update
+    defaults: { _controller: "PersonBundle:Person:update" }
+    methods:  [POST, PUT]
+
+person_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PersonBundle:Person:delete" }
+    methods:  [POST, DELETE]
