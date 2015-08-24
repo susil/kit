@@ -39,15 +39,10 @@ $container->enterScope('request');
 $container->set('request',$request);
 
 
+
 $templating = $container->get('templating');
 
-echo $templating->render(
-    'PersonBundle:Default:index.html.twig',
-    array('name'=> 'Kevin Dale', 'no. of cars'=>5)
-);
-
 use Iam\PersonBundle\Entity\Person;
-
 $person= new Person();
 $person->setEmployeeid(123123123);
 $person->setFirstname('Scott');
@@ -56,11 +51,46 @@ $person->setStatus('Active');
 $person->setTitle('The Man');
 $d1=new DateTime("2015-07-08 11:14:15.638276");
 //$person->setEmpenddate($d1);
+echo 'Test1...';
+echo $templating->render(
+    'PersonBundle:Default:index.html.twig',
+    array('name'=> 'Kevin Dale', 'no. of cars'=>5,'person'=>$person)
+);
 
+/*
 
 $em=$container->get('doctrine')->getManager();
 $em->persist($person);
 $em->flush();
+*/
+
+
+use GuzzleHttp\Client;
+
+$client = new Client([
+    // Base URI is used with relative requests
+    'base_uri' => 'http://127.0.0.1:8000',
+    // You can set any number of default request options.
+    'timeout'  => 100.0,
+]);
+
+//$client = new GuzzleHttp\Client(['base_uri' => 'http://localhost:80000/']);
+
+$response = $client->get('hello/Scott');
+
+echo 'Test2...\n\n';
+echo $response->getBody();
+
+$response = $client->get('hello/Tim');
+
+echo 'Test3...\n\n';
+echo $response->getBody();
+
+
+echo 'Test4...\n\n';
+$response = $client->get('person/2/show');
+//echo json_encode($response->getBody());
+echo $response->getBody();
 
 
 

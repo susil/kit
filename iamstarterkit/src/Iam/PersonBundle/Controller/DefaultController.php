@@ -13,7 +13,7 @@ class DefaultController extends Controller
         $repo = $em->getRepository('PersonBundle:Person');
 
         $person = $repo->findOneBy( array(
-            'firstname'=>'Scott'
+            'firstname'=>$name
         ));
 
 
